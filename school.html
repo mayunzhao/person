@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">	
+			*{
+				margin: 0;
+				padding: 0;
+			}		
+			body{
+				background-image: url(Images/jQuery/school.png);
+				background-size: 100%;
+				background-repeat:no-repeat;				
+			}
+			.box{
+				width: 340px;
+				height: 30px;
+				margin: 100px auto;
+				background: url(img/bg.jpg) no-repeat;
+			}
+			ul{
+				list-style: none;
+			}
+			ul li{
+				width: 100px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				float: left;
+				margin-left: 10px;
+				background: url(img/libg.jpg) no-repeat;
+				cursor: pointer;
+				font-size: 20px;
+				font-weight: 700;
+			}
+			ul ul{
+				margin-left: -10px;
+				display: none;
+			}
+			.box2{				
+				padding-top: 135px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<ul>
+				<li>
+					教学特色
+					<ul>
+						<li>图书馆</li>
+						<li>教学楼</li>
+						<li>实训楼</li>
+					</ul>
+				</li>
+				<li>
+					校园特色
+					<ul>
+						<li>池塘</li>
+						<li>食堂</li>
+						<li>宿舍</li>
+					</ul>
+				</li>
+				<li>
+					专业
+					<ul>
+						<li>大数据</li>
+						<li>超凡设计</li>
+						<li>汽车工程</li>
+					</ul>
+				</li>
+			</ul>
+			<div class="box2" id="box2">
+				<video controls="controls"loop="loop"height="200px">
+				<source src="Images/web/schoolshow.mp4"type="video/mp4"></source>	
+				</video>
+			</div>
+		</div>		
+	</body>
+	<script type="text/javascript">
+	function List(id){
+			this.obj=document.getElementById(id);
+			this.lis=this.obj.children[0].children;
+		}
+		//封装的 显示模块
+		List.prototype.show=function(obj){
+			obj.style.display="block";
+		}
+		//封装的 隐藏模块
+		List.prototype.hidden=function(obj){
+			obj.style.display="none";
+		}
+		//遍历
+		List.prototype.init=function(){
+			var that=this;
+			for(var i=0;i<this.lis.length;i++){
+				this.lis[i].onmouseover=function(){
+					that.show(this.children[0]);
+				}
+				this.lis[i].onmouseout=function(){
+					that.hidden(this.children[0]);
+				}
+			}
+		}
+		
+		//初始化
+		var list=new List("box");
+		list.init();
+	</script>
+
+</html>
